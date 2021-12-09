@@ -112,7 +112,7 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', randomPoster);
-
+showRandomButton.addEventListener('click', changePoster);
 // functions and event handlers go here 👇
 function randomPoster() {
   posterImage.src = images[getRandomIndex(images)];
@@ -120,6 +120,11 @@ function randomPoster() {
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
 }
 
+function changePoster() {
+  posterImage.src = images[getRandomIndex(images)];
+  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterQuote.innerText = quotes[getRandomIndex(quotes)];
+}
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
