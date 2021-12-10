@@ -119,7 +119,7 @@ var currentPoster;
 window.addEventListener('load', randomPoster);
 showRandomButton.addEventListener('click', changePoster);
 makeYourOwnButton.addEventListener('click', makeNewPoster);
-
+showSavedButton.addEventListener('click', showPoster);
 // functions and event handlers go here 👇
 function randomPoster() {
   posterImage.src = images[getRandomIndex(images)];
@@ -139,6 +139,10 @@ function makeNewPoster() {
   //savedPostersPage.classList.add('hidden');
 }
 
+function showPoster() {
+  savedPostersPage.classList.remove('hidden');
+  mainPage.classList.add('hidden');
+}
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
