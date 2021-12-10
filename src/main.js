@@ -110,7 +110,8 @@ var makeYourOwnButton = document.querySelector('.show-form');
 var mainPage = document.querySelector('.main-poster');
 var makeYourOwnPage = document.querySelector('.poster-form');
 var savedPostersPage = document.querySelector('.saved-posters');
-
+var takeMeBackButton = document.querySelector('show-main');
+var backToMainButton = document.querySelector('back-to-main');
 
 var savedPosters = [];
 var currentPoster;
@@ -120,6 +121,8 @@ window.addEventListener('load', randomPoster);
 showRandomButton.addEventListener('click', changePoster);
 makeYourOwnButton.addEventListener('click', makeNewPoster);
 showSavedButton.addEventListener('click', showPoster);
+takeMeBackButton.addEventListener('click', takeBackFromCreate);
+backToMainButton.addEventListener('click', takeBackFromSaved);
 // functions and event handlers go here 👇
 function randomPoster() {
   posterImage.src = images[getRandomIndex(images)];
@@ -143,6 +146,17 @@ function showPoster() {
   savedPostersPage.classList.remove('hidden');
   mainPage.classList.add('hidden');
 }
+
+function takeMeBackButton() {
+  mainPage.classList.remove('hidden');
+  makeYourOwnPage.classList.add('hidden');
+}
+
+function backToMainButton() {
+  mainPage.classList.remove('hidden');
+  savedPostersPage.classList.add('hidden');
+}
+
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
