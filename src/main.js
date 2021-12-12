@@ -120,16 +120,20 @@ var posterTitleInput = document.querySelector('#poster-title');
 var posterQuoteInput = document.querySelector('#poster-quote');
 
 var savedPosters = [];
-var currentPoster;
+var currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText);
 
 // event listeners go here 👇
 window.addEventListener('load', randomPoster);
 showRandomButton.addEventListener('click', changePoster);
 makeYourOwnButton.addEventListener('click', makeNewPoster);
-showSavedButton.addEventListener('click', showPoster);
 takeMeBackButton.addEventListener('click', takeBackHome);
 backToMainButton.addEventListener('click', takeBackHome);
 showNewPosterButton.addEventListener('click', showNewPoster);
+savePosterButton.addEventListener('click', savePoster);
+showSavedButton.addEventListener('click', function() {
+  showPoster(savedPostersPage);
+  //showPostersArray(savedPosters);
+});
 
 // functions and event handlers go here 👇
 function randomPoster() {
@@ -142,12 +146,12 @@ function changePoster() {
   posterImage.src = images[getRandomIndex(images)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText);
 }
 
 function makeNewPoster() {
   makeYourOwnPage.classList.remove('hidden');
   mainPage.classList.add('hidden');
-  //savedPostersPage.classList.add('hidden');
 }
 
 function showPoster() {
@@ -167,8 +171,29 @@ function showNewPoster() {
   posterTitle.innerText = posterTitleInput.value;
   posterQuote.innerText = posterQuoteInput.value;
   takeBackHome();
+  currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText);
 }
 
+function savePoster() {
+  for (var i = 0; i = savedPosters.length; i++) {
+    // if (currentPoster === savedPosters[i]) {
+    //   return savedPosters;
+    // }
+    savedPosters.push(currentPoster);
+  }
+}
+
+// function showPostersArray() {
+//   savedPostersPage.innerHTML += '';
+//   for (var i = 0; i < savedPosters.length; i++) {
+//     savedPostersPage.innerHTML =
+//     `<article class='mini-poster' id='${savedPosters[i].id}'>
+//       <img src=${savedPosters[i].posterImage}>
+//       <h2>${savedPosters[i].posterTitle}</h2>
+//       <h4>${savedPosters[i].posterQuote}</h4>
+//     </article>`;
+//   }
+// }
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
