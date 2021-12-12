@@ -183,17 +183,18 @@ function savePoster() {
   }
 }
 
-// function showPostersArray() {
-//   savedPostersPage.innerHTML += '';
-//   for (var i = 0; i < savedPosters.length; i++) {
-//     savedPostersPage.innerHTML =
-//     `<article class='mini-poster' id='${savedPosters[i].id}'>
-//       <img src=${savedPosters[i].posterImage}>
-//       <h2>${savedPosters[i].posterTitle}</h2>
-//       <h4>${savedPosters[i].posterQuote}</h4>
-//     </article>`;
-//   }
-// }
+function showPostersArray() {
+  savedPostersPage.innerHTML += '';
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPostersPage.innerHTML =
+    `<article class='mini-poster' id='${savedPosters[i].id}'>
+      <img src=${savedPosters[i].posterImage}>
+      <h2>${savedPosters[i].posterTitle}</h2>
+      <h4>${savedPosters[i].posterQuote}</h4>
+    </article>`;
+  }
+}
+
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
