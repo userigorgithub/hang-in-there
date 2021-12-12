@@ -120,7 +120,7 @@ var posterTitleInput = document.querySelector('#poster-title');
 var posterQuoteInput = document.querySelector('#poster-quote');
 
 var savedPosters = [];
-var currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText);
+var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', randomPoster);
@@ -132,7 +132,7 @@ showNewPosterButton.addEventListener('click', showNewPoster);
 savePosterButton.addEventListener('click', savePoster);
 showSavedButton.addEventListener('click', function() {
   showPoster(savedPostersPage);
-  //showPostersArray(savedPosters);
+  showPostersArray(savedPosters); //MAIN Q: Why it hides h2 (line37 html)and button (line39 html)?
 });
 
 // functions and event handlers go here 👇
@@ -140,13 +140,16 @@ function randomPoster() {
   posterImage.src = images[getRandomIndex(images)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText);
+
 }
 
 function changePoster() {
-  posterImage.src = images[getRandomIndex(images)];
-  posterTitle.innerText = titles[getRandomIndex(titles)];
-  posterQuote.innerText = quotes[getRandomIndex(quotes)];
-  currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText);
+  randomPoster();
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+
 }
 
 function makeNewPoster() {
@@ -176,22 +179,25 @@ function showNewPoster() {
 
 function savePoster() {
   for (var i = 0; i = savedPosters.length; i++) {
-    // if (currentPoster === savedPosters[i]) {
-    //   return savedPosters;
-    // }
-    savedPosters.push(currentPoster);
+    if (currentPoster === savedPosters[i]) {
+      return savedPosters; //???? gives infinity loop?
+    }
   }
+  savedPosters.push(currentPoster);
 }
 
-function showPostersArray() {
-  savedPostersPage.innerHTML += '';
+function showPostersArray(savedPosters) {
+  savedPostersPage.innerHTML = '';
   for (var i = 0; i < savedPosters.length; i++) {
-    savedPostersPage.innerHTML =
-    `<article class='mini-poster' id='${savedPosters[i].id}'>
-      <img src=${savedPosters[i].posterImage}>
-      <h2>${savedPosters[i].posterTitle}</h2>
-      <h4>${savedPosters[i].posterQuote}</h4>
-    </article>`;
+    savedPostersPage.innerHTML +=
+    `
+    <article class='mini-poster' id='${savedPosters[i].id}'>
+      <img src=${savedPosters[i].imageURL}>
+      <h2>${savedPosters[i].title}</h2>
+      <h4>${savedPosters[i].quote}</h4>
+    </article>
+    `
+
   }
 }
 
