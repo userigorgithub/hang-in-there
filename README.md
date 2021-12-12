@@ -1,18 +1,36 @@
 # Hang In There
 
-A boilerplate repo. 
+## Contributors
+[Lourdes Benites](https://github.com/lourdesbnts)
 
-## Set Up
+[Igor Decess](https://github.com/userigorgithub)
 
-1. One teammate: fork this repository
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
+## Technologies Used
+- Github open source version control software: [Website](https://github.com/)
 
-Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
+- HTML
+- CSS
+- JavaScript
 
-To view your project:
+## Overview
+Hang In There was the project to gain better understanding in writing JavaScript code. When you are feeling down, use it to generate motivational and inspiring posters. Access it by clicking [HERE!](https://userigorgithub.github.io/hang-in-there/)
 
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
+## Installation Instructions
+1. Clone this repository
+2. `cd` into the directory
+3. Run `open index.html` to see it in the browser
+
+## User Instructions
+1. This is the main page of the application.
+
+
+
+2. Click on "Show Another Random Poster" to generate a random poster.
+3. Click on "Make Your Own Poster" to create your own personalized poster.
+
+
+
+4. Click on "Save This Poster" and then click on "Show Saved Posters" to view all of your saved posters.
+
+
+5. Enjoy!
