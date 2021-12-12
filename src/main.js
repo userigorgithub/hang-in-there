@@ -135,7 +135,7 @@ showSavedButton.addEventListener('click', function() {
   showPoster(savedPostersPage);
   showPostersArray(savedPosters);
 });
-
+savedPostersGrid.addEventListener('dblclick', deletePoster);
 
 // functions and event handlers go here 👇
 function randomPoster() {
@@ -199,7 +199,16 @@ function showPostersArray(savedPosters) {
   }
 }
 
-
+function deletePoster() {
+  event.preventDefault();
+  var del = Number(event.target.closest(".mini-poster").id)
+    for (var i = 0; i < savedPosters.length; i++) {
+      if (savedPosters[i].id === del) {
+        savedPosters.splice([i],1);
+      }
+    }
+    showPostersArray();
+}
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
