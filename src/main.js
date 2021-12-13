@@ -186,13 +186,12 @@ function savePoster() {
   savedPosters.push(currentPoster);
 }
 
-function showPostersArray(savedPosters) {
-
+function showPostersArray() {
   savedPostersGrid.innerHTML = '';
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.innerHTML +=
     `<article class='mini-poster' id='${savedPosters[i].id}'>
-      <img src=${savedPosters[i].imageURL}>
+      <img src='${savedPosters[i].imageURL}' id='${savedPosters[i].id}'>
       <h2>${savedPosters[i].title}</h2>
       <h4>${savedPosters[i].quote}</h4>
     </article>`
@@ -200,10 +199,9 @@ function showPostersArray(savedPosters) {
 }
 
 function deletePoster() {
-  event.preventDefault();
-  var del = Number(event.target.closest(".mini-poster").id)
+  var delPost = event.target.id;
     for (var i = 0; i < savedPosters.length; i++) {
-      if (savedPosters[i].id === del) {
+      if (savedPosters[i].id.toString() == delPost) {
         savedPosters.splice([i],1);
       }
     }
